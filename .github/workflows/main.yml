@@ -18,5 +18,4 @@ jobs:
           curl -sSL https://github.com/psastras/sarif-rs/releases/download/latest-x86_64-unknown-linux-gnu/sarif-fmt -o sarif-fmt
           curl -sSL https://github.com/psastras/sarif-rs/releases/download/latest-x86_64-unknown-linux-gnu/hadolint-sarif -o hadolint-sarif
           chmod +x ./sarif-fmt ./hadolint-sarif
-          echo "::add-matcher::.github/sarif-matcher.json"
           nix-shell --run 'hadolint -f json Dockerfile | ./hadolint-sarif | ./sarif-fmt -f plain' nix/hadolint.nix
